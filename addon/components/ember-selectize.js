@@ -355,10 +355,10 @@ export default Ember.Component.extend({
     var valuePath = this.get('_valuePath');
     var item = valuePath ? get(obj, valuePath) : obj;
 
-    this.get('selection').addObject(item);
+    this.get('selection').removeObject(item);
 
     Ember.run.schedule('actions', this, function() {
-      this.sendAction('remove-item', obj);
+      this.sendAction('remove-item', item);
     });
   },
   /**
